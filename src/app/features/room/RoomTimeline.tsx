@@ -127,6 +127,7 @@ import { useAccessiblePowerTagColors, useGetMemberPowerTag } from '../../hooks/u
 import { useTheme } from '../../hooks/useTheme';
 import { useRoomCreatorsTag } from '../../hooks/useRoomCreatorsTag';
 import { usePowerLevelTags } from '../../hooks/usePowerLevelTags';
+import { useClientConfig } from '../../hooks/useClientConfig';
 
 const TimelineFloat = as<'div', css.TimelineFloatVariants>(
   ({ position, className, ...props }, ref) => (
@@ -461,6 +462,20 @@ export function RoomTimeline({ room, eventId, roomInputRef, editor }: RoomTimeli
   const creatorsTag = useRoomCreatorsTag();
   const powerLevelTags = usePowerLevelTags(room, powerLevels);
   const getMemberPowerTag = useGetMemberPowerTag(room, creators, powerLevels);
+
+  const clientConfig = useClientConfig();
+  const streamingBotMxids = clientConfig.streamingBotMxids ?? [];
+  const streamingEditWindowMs = (clientConfig.streamingEditWindowSec ?? 300) * 1000;
+  const isStreamingEdit = useCallback(
+    (mEvent: MatrixEvent, editedEvent?: MatrixEvent | null) => {
+      if (!editedEvent) return false;
+      const sender = mEvent.getSender() ?? '';
+      if (!streamingBotMxids.includes(sender)) return false;
+      const delta = editedEvent.getTs() - mEvent.getTs();
+      return delta >= 0 && delta <= streamingEditWindowMs;
+    },
+    [streamingBotMxids, streamingEditWindowMs]
+  );
 
   const theme = useTheme();
   const accessiblePowerTagColors = useAccessiblePowerTagColors(
@@ -1100,7 +1115,7 @@ export function RoomTimeline({ room, eventId, roomInputRef, editor }: RoomTimeli
                 displayName={senderDisplayName}
                 msgType={mEvent.getContent().msgtype ?? ''}
                 ts={mEvent.getTs()}
-                edited={!!editedEvent}
+                edited={!!editedEvent && !isStreamingEdit(mEvent, editedEvent)}
                 getContent={getContent}
                 mediaAutoLoad={mediaAutoLoad}
                 urlPreview={showUrlPreview}
@@ -1206,7 +1221,7 @@ export function RoomTimeline({ room, eventId, roomInputRef, editor }: RoomTimeli
                       displayName={senderDisplayName}
                       msgType={mEvent.getContent().msgtype ?? ''}
                       ts={mEvent.getTs()}
-                      edited={!!editedEvent}
+                      edited={!!editedEvent && !isStreamingEdit(mEvent, editedEvent)}
                       getContent={getContent}
                       mediaAutoLoad={mediaAutoLoad}
                       urlPreview={showUrlPreview}

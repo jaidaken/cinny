@@ -248,3 +248,35 @@ export const highlightText = style([
     color: 'black',
   },
 ]);
+
+// Tool-card disclosure style for bot messages that emit <details><summary>
+// for inline tool invocations.
+export const Details = style([
+  DefaultReset,
+  MarginSpaced,
+  {
+    background: color.SurfaceVariant.Container,
+    border: `${config.borderWidth.B300} solid ${color.SurfaceVariant.ContainerLine}`,
+    borderRadius: config.radii.R400,
+    padding: `${config.space.S200} ${config.space.S300}`,
+  },
+]);
+
+export const Summary = style([
+  DefaultReset,
+  {
+    cursor: 'pointer',
+    fontWeight: config.fontWeight.W500,
+    color: color.SurfaceVariant.OnContainer,
+    listStyle: 'none',
+    fontFamily: 'monospace',
+    fontSize: toRem(13),
+    padding: `${config.space.S100} 0`,
+    userSelect: 'none',
+    selectors: {
+      '&::-webkit-details-marker': { display: 'none' },
+      '&::marker': { display: 'none' },
+      '&:hover': { color: color.Primary.Main },
+    },
+  },
+]);

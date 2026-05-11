@@ -18,6 +18,11 @@ export type ClientConfig = {
   };
 
   hashRouter?: HashRouterConfig;
+
+  // Edits within streamingEditWindowSec of a streaming-bot's original event
+  // are suppressed from the (edited) tag.
+  streamingBotMxids?: string[];
+  streamingEditWindowSec?: number;
 };
 
 const ClientConfigContext = createContext<ClientConfig | null>(null);

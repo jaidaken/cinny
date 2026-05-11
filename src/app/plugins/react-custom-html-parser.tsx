@@ -387,6 +387,21 @@ export const getReactCustomHtmlParser = (
           return <CodeBlock opts={opts}>{children}</CodeBlock>;
         }
 
+        if (name === 'details') {
+          return (
+            <details {...props} className={css.Details}>
+              {domToReact(children, opts)}
+            </details>
+          );
+        }
+        if (name === 'summary') {
+          return (
+            <summary {...props} className={css.Summary}>
+              {domToReact(children, opts)}
+            </summary>
+          );
+        }
+
         if (name === 'blockquote') {
           return (
             <Text {...props} size="Inherit" as="blockquote" className={css.BlockQuote}>
