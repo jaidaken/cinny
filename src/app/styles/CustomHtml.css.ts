@@ -127,6 +127,20 @@ export const List = style([
   {
     padding: `0 ${config.space.S100}`,
     paddingLeft: config.space.S600,
+    paddingInlineStart: config.space.S600,
+  },
+]);
+
+export const ListItem = style([
+  DefaultReset,
+  {
+    margin: 0,
+    padding: 0,
+    marginBlockStart: 0,
+    marginBlockEnd: 0,
+    paddingBlockStart: 0,
+    paddingBlockEnd: 0,
+    lineHeight: 1,
   },
 ]);
 
@@ -241,11 +255,11 @@ export const Emoticon = recipe({
 
       height: '1em',
       minWidth: '1em',
-      fontSize: '1.33em',
+      fontSize: '1.1em',
       lineHeight: '1em',
       verticalAlign: 'middle',
       position: 'relative',
-      top: '-0.35em',
+      top: '-0.1em',
       borderRadius: config.radii.R300,
     },
   ],

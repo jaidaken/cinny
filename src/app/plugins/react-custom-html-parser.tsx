@@ -497,6 +497,13 @@ export const getReactCustomHtmlParser = (
             </ol>
           );
         }
+        if (name === 'li') {
+          return (
+            <li {...props} className={css.ListItem}>
+              {domToReact(children, opts)}
+            </li>
+          );
+        }
 
         if (name === 'code') {
           if (parent && 'name' in parent && parent.name === 'pre') {
