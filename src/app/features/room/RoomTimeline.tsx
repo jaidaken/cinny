@@ -1115,6 +1115,7 @@ export function RoomTimeline({ room, eventId, roomInputRef, editor }: RoomTimeli
                 displayName={senderDisplayName}
                 msgType={mEvent.getContent().msgtype ?? ''}
                 ts={mEvent.getTs()}
+                senderId={senderId}
                 edited={!!editedEvent && !isStreamingEdit(mEvent, editedEvent)}
                 getContent={getContent}
                 mediaAutoLoad={mediaAutoLoad}
@@ -1221,6 +1222,7 @@ export function RoomTimeline({ room, eventId, roomInputRef, editor }: RoomTimeli
                       displayName={senderDisplayName}
                       msgType={mEvent.getContent().msgtype ?? ''}
                       ts={mEvent.getTs()}
+                      senderId={senderId}
                       edited={!!editedEvent && !isStreamingEdit(mEvent, editedEvent)}
                       getContent={getContent}
                       mediaAutoLoad={mediaAutoLoad}

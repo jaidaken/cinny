@@ -44,6 +44,7 @@ type RenderMessageContentProps = {
   htmlReactParserOptions: HTMLReactParserOptions;
   linkifyOpts: Opts;
   outlineAttachment?: boolean;
+  senderId?: string;
 };
 export function RenderMessageContent({
   displayName,
@@ -57,6 +58,7 @@ export function RenderMessageContent({
   htmlReactParserOptions,
   linkifyOpts,
   outlineAttachment,
+  senderId,
 }: RenderMessageContentProps) {
   const renderUrlsPreview = (urls: string[]) => {
     const filteredUrls = urls.filter((url) => !testMatrixTo(url));
@@ -83,6 +85,7 @@ export function RenderMessageContent({
               highlightRegex={highlightRegex}
               htmlReactParserOptions={htmlReactParserOptions}
               linkifyOpts={linkifyOpts}
+              senderId={senderId}
             />
           )}
           renderUrlsPreview={urlPreview ? renderUrlsPreview : undefined}
@@ -139,6 +142,7 @@ export function RenderMessageContent({
             highlightRegex={highlightRegex}
             htmlReactParserOptions={htmlReactParserOptions}
             linkifyOpts={linkifyOpts}
+            senderId={senderId}
           />
         )}
         renderUrlsPreview={urlPreview ? renderUrlsPreview : undefined}
@@ -158,6 +162,7 @@ export function RenderMessageContent({
             highlightRegex={highlightRegex}
             htmlReactParserOptions={htmlReactParserOptions}
             linkifyOpts={linkifyOpts}
+            senderId={senderId}
           />
         )}
         renderUrlsPreview={urlPreview ? renderUrlsPreview : undefined}
@@ -176,6 +181,7 @@ export function RenderMessageContent({
             highlightRegex={highlightRegex}
             htmlReactParserOptions={htmlReactParserOptions}
             linkifyOpts={linkifyOpts}
+            senderId={senderId}
           />
         )}
         renderUrlsPreview={urlPreview ? renderUrlsPreview : undefined}
