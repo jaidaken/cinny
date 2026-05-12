@@ -128,16 +128,15 @@ export const List = style([
   },
 ]);
 
-// line-height 1 on li itself collapses inter-row gap; children get 1.15 for
-// readable wrapping. <p> inside li becomes inline to defeat block spacing.
+// The inline-code pill inside an <li> inflates the line-box to its own
+// line-height; forcing every child of li down to 1 collapses that.
 globalStyle(`${List} > li`, {
   margin: 0,
   padding: 0,
-  lineHeight: 1,
+  lineHeight: 1.05,
 });
-globalStyle(`${List} > li > *`, {
-  margin: 0,
-  lineHeight: 1.15,
+globalStyle(`${List} > li *`, {
+  lineHeight: 1.05,
 });
 globalStyle(`${List} > li > p`, {
   margin: 0,
