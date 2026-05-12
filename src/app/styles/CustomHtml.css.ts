@@ -3,23 +3,24 @@ import { recipe } from '@vanilla-extract/recipes';
 import { color, config, DefaultReset, toRem } from 'folds';
 import { ContainerColor } from './ContainerColor.css';
 
+// Word-document tight: single-spaced (~1.25) line-height, zero block margin.
+const TightLineHeight = '1.25';
+
 export const MarginSpaced = style({
   marginBottom: 0,
   marginTop: 0,
+  lineHeight: TightLineHeight,
 });
 
-export const Paragraph = style([DefaultReset]);
+export const Paragraph = style([DefaultReset, { lineHeight: TightLineHeight }]);
 
 export const Heading = style([
   DefaultReset,
   MarginSpaced,
   {
-    marginTop: config.space.S100,
-    selectors: {
-      '&:first-child': {
-        marginTop: 0,
-      },
-    },
+    marginTop: 0,
+    marginBottom: 0,
+    lineHeight: '1.2',
   },
 ]);
 
@@ -250,7 +251,7 @@ export const Details = style([
     background: color.SurfaceVariant.Container,
     border: `${config.borderWidth.B300} solid ${color.SurfaceVariant.ContainerLine}`,
     borderRadius: config.radii.R400,
-    padding: `${config.space.S200} ${config.space.S300}`,
+    padding: `${config.space.S100} ${config.space.S200}`,
   },
 ]);
 
@@ -309,7 +310,7 @@ export const Tr = style([
 export const Th = style([
   DefaultReset,
   {
-    padding: `${config.space.S200} ${config.space.S300}`,
+    padding: `${config.space.S100} ${config.space.S200}`,
     textAlign: 'left',
     fontWeight: config.fontWeight.W600,
     borderRight: `${config.borderWidth.B300} solid ${color.SurfaceVariant.ContainerLine}`,
@@ -322,7 +323,7 @@ export const Th = style([
 export const Td = style([
   DefaultReset,
   {
-    padding: `${config.space.S200} ${config.space.S300}`,
+    padding: `${config.space.S100} ${config.space.S200}`,
     verticalAlign: 'top',
     borderRight: `${config.borderWidth.B300} solid ${color.SurfaceVariant.ContainerLine}`,
     selectors: {
