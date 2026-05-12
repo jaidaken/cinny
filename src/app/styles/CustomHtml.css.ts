@@ -4,8 +4,8 @@ import { color, config, DefaultReset, toRem } from 'folds';
 import { ContainerColor } from './ContainerColor.css';
 
 export const MarginSpaced = style({
-  marginBottom: config.space.S200,
-  marginTop: config.space.S200,
+  marginBottom: config.space.S100,
+  marginTop: config.space.S100,
   selectors: {
     '&:first-child': {
       marginTop: 0,
@@ -22,7 +22,7 @@ export const Heading = style([
   DefaultReset,
   MarginSpaced,
   {
-    marginTop: config.space.S400,
+    marginTop: config.space.S200,
     selectors: {
       '&:first-child': {
         marginTop: 0,
