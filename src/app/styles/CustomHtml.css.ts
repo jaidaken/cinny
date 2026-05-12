@@ -3,8 +3,8 @@ import { recipe } from '@vanilla-extract/recipes';
 import { color, config, DefaultReset, toRem } from 'folds';
 import { ContainerColor } from './ContainerColor.css';
 
-// Word-document tight: single-spaced (~1.25) line-height, zero block margin.
-const TightLineHeight = '1.25';
+// Word-document single-spaced. 1.15 matches MS Word default single line spacing.
+const TightLineHeight = '1.15';
 
 export const MarginSpaced = style({
   marginBottom: 0,
@@ -20,7 +20,7 @@ export const Heading = style([
   {
     marginTop: 0,
     marginBottom: 0,
-    lineHeight: '1.2',
+    lineHeight: '1.15',
   },
 ]);
 
@@ -126,7 +126,7 @@ export const List = style([
 globalStyle(`${List} > li`, {
   marginTop: 0,
   marginBottom: 0,
-  lineHeight: '1.25',
+  lineHeight: TightLineHeight,
 });
 globalStyle(`${List} > li > p`, {
   marginTop: 0,
