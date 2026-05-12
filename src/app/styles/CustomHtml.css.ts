@@ -280,3 +280,72 @@ export const Summary = style([
     },
   },
 ]);
+
+// GFM tables: pulldown_cmark emits them when ENABLE_TABLES is set.
+export const Table = style([
+  DefaultReset,
+  MarginSpaced,
+  {
+    borderCollapse: 'collapse',
+    width: '100%',
+    fontSize: toRem(14),
+    border: `${config.borderWidth.B300} solid ${color.SurfaceVariant.ContainerLine}`,
+    borderRadius: config.radii.R300,
+    overflow: 'hidden',
+  },
+]);
+
+export const Thead = style([
+  DefaultReset,
+  {
+    background: color.SurfaceVariant.Container,
+    color: color.SurfaceVariant.OnContainer,
+  },
+]);
+
+export const Tr = style([
+  DefaultReset,
+  {
+    selectors: {
+      '&:not(:last-child)': {
+        borderBottom: `${config.borderWidth.B300} solid ${color.SurfaceVariant.ContainerLine}`,
+      },
+    },
+  },
+]);
+
+export const Th = style([
+  DefaultReset,
+  {
+    padding: `${config.space.S200} ${config.space.S300}`,
+    textAlign: 'left',
+    fontWeight: config.fontWeight.W600,
+    borderRight: `${config.borderWidth.B300} solid ${color.SurfaceVariant.ContainerLine}`,
+    selectors: {
+      '&:last-child': { borderRight: 'none' },
+    },
+  },
+]);
+
+export const Td = style([
+  DefaultReset,
+  {
+    padding: `${config.space.S200} ${config.space.S300}`,
+    verticalAlign: 'top',
+    borderRight: `${config.borderWidth.B300} solid ${color.SurfaceVariant.ContainerLine}`,
+    selectors: {
+      '&:last-child': { borderRight: 'none' },
+    },
+  },
+]);
+
+// Horizontal rule: thin divider between sections.
+export const Hr = style([
+  DefaultReset,
+  MarginSpaced,
+  {
+    border: 'none',
+    borderTop: `${config.borderWidth.B300} solid ${color.SurfaceVariant.ContainerLine}`,
+    height: 0,
+  },
+]);

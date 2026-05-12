@@ -402,6 +402,45 @@ export const getReactCustomHtmlParser = (
           );
         }
 
+        if (name === 'table') {
+          return (
+            <table {...props} className={css.Table}>
+              {domToReact(children, opts)}
+            </table>
+          );
+        }
+        if (name === 'thead') {
+          return (
+            <thead {...props} className={css.Thead}>
+              {domToReact(children, opts)}
+            </thead>
+          );
+        }
+        if (name === 'tr') {
+          return (
+            <tr {...props} className={css.Tr}>
+              {domToReact(children, opts)}
+            </tr>
+          );
+        }
+        if (name === 'th') {
+          return (
+            <th {...props} className={css.Th}>
+              {domToReact(children, opts)}
+            </th>
+          );
+        }
+        if (name === 'td') {
+          return (
+            <td {...props} className={css.Td}>
+              {domToReact(children, opts)}
+            </td>
+          );
+        }
+        if (name === 'hr') {
+          return <hr {...props} className={css.Hr} />;
+        }
+
         if (name === 'blockquote') {
           return (
             <Text {...props} size="Inherit" as="blockquote" className={css.BlockQuote}>
