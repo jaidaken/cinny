@@ -42,6 +42,8 @@ const permittedHtmlTags = [
   'img',
   'details',
   'summary',
+  'input',
+  'section',
 ];
 
 const urlSchemes = ['https', 'http', 'ftp', 'mailto', 'magnet'];
@@ -78,6 +80,8 @@ const permittedTagToAttributes = {
   u: ['data-md'],
   s: ['data-md'],
   del: ['data-md'],
+  input: ['type', 'checked', 'disabled'],
+  section: ['class'],
 };
 
 const transformFontTag: Transformer = (tagName, attribs) => ({

@@ -349,3 +349,37 @@ export const Hr = style([
     height: 0,
   },
 ]);
+
+// Strikethrough: soften from harsh black to subtle muted.
+export const Strikethrough = style([
+  DefaultReset,
+  {
+    textDecoration: 'line-through',
+    color: color.SurfaceVariant.OnContainer,
+    opacity: 0.7,
+  },
+]);
+
+// Task-list checkbox: pulldown_cmark emits <input type=checkbox disabled>.
+export const TaskCheckbox = style([
+  DefaultReset,
+  {
+    marginRight: config.space.S100,
+    accentColor: color.Primary.Main,
+    cursor: 'default',
+    verticalAlign: 'middle',
+  },
+]);
+
+// Footnote section: separated and slightly muted to read as supplementary.
+export const FootnoteSection = style([
+  DefaultReset,
+  {
+    marginTop: config.space.S400,
+    paddingTop: config.space.S200,
+    borderTop: `${config.borderWidth.B300} solid ${color.SurfaceVariant.ContainerLine}`,
+    fontSize: toRem(13),
+    color: color.SurfaceVariant.OnContainer,
+    opacity: 0.85,
+  },
+]);

@@ -441,6 +441,40 @@ export const getReactCustomHtmlParser = (
           return <hr {...props} className={css.Hr} />;
         }
 
+        if (name === 'tbody') {
+          return <tbody {...props}>{domToReact(children, opts)}</tbody>;
+        }
+        if (name === 'caption') {
+          return <caption {...props}>{domToReact(children, opts)}</caption>;
+        }
+
+        if (name === 'del' || name === 's' || name === 'strike') {
+          const Tag = name as 'del' | 's' | 'strike';
+          return (
+            <Tag {...props} className={css.Strikethrough}>
+              {domToReact(children, opts)}
+            </Tag>
+          );
+        }
+
+        if (name === 'input' && (props.type === 'checkbox' || attribs.type === 'checkbox')) {
+          // Task-list checkbox emitted by pulldown_cmark ENABLE_TASKLISTS.
+          return (
+            <input {...props} type="checkbox" disabled className={css.TaskCheckbox} readOnly />
+          );
+        }
+
+        if (
+          name === 'section' &&
+          (attribs.class === 'footnotes' || props.className === 'footnotes')
+        ) {
+          return (
+            <section {...props} className={css.FootnoteSection}>
+              {domToReact(children, opts)}
+            </section>
+          );
+        }
+
         if (name === 'blockquote') {
           return (
             <Text {...props} size="Inherit" as="blockquote" className={css.BlockQuote}>
