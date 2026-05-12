@@ -128,15 +128,20 @@ export const List = style([
   },
 ]);
 
-// Tighten li items: zero vertical margin + tight line-height matching body.
+// line-height 1 on li itself collapses inter-row gap; children get 1.15 for
+// readable wrapping. <p> inside li becomes inline to defeat block spacing.
 globalStyle(`${List} > li`, {
-  marginTop: 0,
-  marginBottom: 0,
-  lineHeight: TightLineHeight,
+  margin: 0,
+  padding: 0,
+  lineHeight: 1,
+});
+globalStyle(`${List} > li > *`, {
+  margin: 0,
+  lineHeight: 1.15,
 });
 globalStyle(`${List} > li > p`, {
-  marginTop: 0,
-  marginBottom: 0,
+  margin: 0,
+  display: 'inline',
 });
 
 export const Img = style([
