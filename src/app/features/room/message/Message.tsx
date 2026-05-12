@@ -79,6 +79,7 @@ import { MemberPowerTag, StateEvent } from '../../../../types/matrix/room';
 import { PowerIcon } from '../../../components/power';
 import colorMXID from '../../../../util/colorMXID';
 import { getPowerTagIconSrc } from '../../../hooks/useMemberPowerTag';
+import { useClientConfig } from '../../../hooks/useClientConfig';
 
 export type ReactionHandler = (keyOrMxc: string, shortcode: string) => void;
 
@@ -874,10 +875,14 @@ export const Message = as<'div', MessageProps>(
 
     const isThreadedMessage = mEvent.threadRootId !== undefined;
 
+    const streamingBotMxids = useClientConfig().streamingBotMxids ?? [];
+    const isBotSender = streamingBotMxids.includes(mEvent.getSender() ?? '');
+
     return (
       <MessageBase
         className={classNames(css.MessageBase, className, {
           [css.MessageBaseBubbleCollapsed]: messageLayout === MessageLayout.Bubble && collapse,
+          [css.BotMessage]: isBotSender,
         })}
         tabIndex={0}
         space={messageSpacing}

@@ -1,9 +1,16 @@
 import { style } from '@vanilla-extract/css';
-import { DefaultReset, config, toRem } from 'folds';
+import { color, DefaultReset, config, toRem } from 'folds';
 
 export const MessageBase = style({
   position: 'relative',
 });
+
+// Subtle left accent so streaming bot messages read distinct from human turns.
+export const BotMessage = style({
+  borderLeft: `${config.borderWidth.B500} solid ${color.Primary.Container}`,
+  paddingLeft: config.space.S200,
+});
+
 export const MessageBaseBubbleCollapsed = style({
   paddingTop: 0,
 });
