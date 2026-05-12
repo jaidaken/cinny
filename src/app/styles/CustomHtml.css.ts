@@ -128,15 +128,20 @@ export const List = style([
   },
 ]);
 
-// The inline-code pill inside an <li> inflates the line-box to its own
-// line-height; forcing every child of li down to 1 collapses that.
+// Inline code inside li sets line-height + has a border-box that inflates
+// the line-box. Strip its vertical contribution and force everything to 1.
 globalStyle(`${List} > li`, {
   margin: 0,
   padding: 0,
-  lineHeight: 1.05,
+  lineHeight: 1,
 });
 globalStyle(`${List} > li *`, {
-  lineHeight: 1.05,
+  lineHeight: 1,
+});
+globalStyle(`${List} > li code`, {
+  border: 'none',
+  padding: '0 4px',
+  verticalAlign: 'baseline',
 });
 globalStyle(`${List} > li > p`, {
   margin: 0,
