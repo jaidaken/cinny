@@ -9,6 +9,8 @@ const TightLineHeight = '1.15';
 export const MarginSpaced = style({
   marginBottom: 0,
   marginTop: 0,
+  marginBlockStart: 0,
+  marginBlockEnd: 0,
   lineHeight: TightLineHeight,
 });
 
@@ -133,6 +135,10 @@ export const List = style([
 globalStyle(`${List} > li`, {
   margin: 0,
   padding: 0,
+  marginBlockStart: 0,
+  marginBlockEnd: 0,
+  paddingBlockStart: 0,
+  paddingBlockEnd: 0,
   lineHeight: 1,
 });
 globalStyle(`${List} > li *`, {
