@@ -1,4 +1,4 @@
-import { style } from '@vanilla-extract/css';
+import { globalStyle, style } from '@vanilla-extract/css';
 import { recipe } from '@vanilla-extract/recipes';
 import { color, config, DefaultReset, toRem } from 'folds';
 import { ContainerColor } from './ContainerColor.css';
@@ -121,6 +121,17 @@ export const List = style([
     paddingLeft: config.space.S600,
   },
 ]);
+
+// Tighten li items: zero vertical margin + tight line-height matching body.
+globalStyle(`${List} > li`, {
+  marginTop: 0,
+  marginBottom: 0,
+  lineHeight: '1.25',
+});
+globalStyle(`${List} > li > p`, {
+  marginTop: 0,
+  marginBottom: 0,
+});
 
 export const Img = style([
   DefaultReset,
@@ -280,7 +291,8 @@ export const Table = style([
   MarginSpaced,
   {
     borderCollapse: 'collapse',
-    width: '100%',
+    width: 'auto',
+    maxWidth: '100%',
     fontSize: toRem(14),
     border: `${config.borderWidth.B300} solid ${color.SurfaceVariant.ContainerLine}`,
     borderRadius: config.radii.R300,
