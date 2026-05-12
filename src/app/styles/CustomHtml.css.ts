@@ -50,6 +50,12 @@ export const Code = style([
   CodeFont,
   {
     padding: `0 ${config.space.S100}`,
+    // Keep the inline pill from stretching its parent row beyond body
+    // line-height. Without these, monospace metrics + border push li rows
+    // visibly taller than 1.15.
+    lineHeight: '1.15',
+    fontSize: '0.92em',
+    verticalAlign: 'baseline',
   },
 ]);
 
